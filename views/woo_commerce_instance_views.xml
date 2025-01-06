@@ -84,7 +84,7 @@
                 <field name="completed_count_logs"/>
                 <field name="failed_count_logs"/>
                 <templates>
-                    <t t-name="kanban-box">
+                    <t t-name="card">
                         <div t-attf-class="#{!selection_mode ? kanban_color(record.color.raw_value) : ''}"
                              name="woo_commerce">
                             <div>
