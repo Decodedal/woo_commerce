@@ -21,7 +21,7 @@
 ###############################################################################
 {
     'name': 'Odoo WooCommerce Connector',
-    'version': '18.0.0.0.0',
+    'version': '18.0',
     'category': 'Ecommerce',
     'summary': 'Odoo WooCommerce Connector for seamless integration between '
                'Odoo and WooCommerce. Sync customers, products, and orders '
