@@ -36,9 +36,11 @@ class ProductAttribute(models.Model):
                                   help='WooCommerce Instance id')
     slug = fields.Char(string='Slug', help='Slug value of the attribute')
 
-    _constraints = [
-        Constraint('UNIQUE', fields=['slug'], name='unique_slug', message='The slug must be unique'),
-    ]
+    @api.constrains('slug')
+    def _check_slug_unique(self):
+        for record in self:
+            if self.search_count([('slug', '=', record.slug), ('id', '!=', record.id)]):
+                raise ValidationError(_('The slug "%s" must be unique.') % record.slug)
 
 
 class ProductAttributeValue(models.Model):
@@ -55,6 +57,8 @@ class ProductAttributeValue(models.Model):
                                   help='WooCommerce Instance id')
     slug = fields.Char(string='Slug', help='Slug value of the attribute.')
 
-    _constraints = [
-        Constraint('UNIQUE', fields=['slug'], name='unique_slug_value', message='The slug must be unique'),
-    ]
+    @api.constrains('slug')
+    def _check_slug_unique(self):
+        for record in self:
+            if self.search_count([('slug', '=', record.slug), ('id', '!=', record.id)]):
+                raise ValidationError(_('The slug "%s" must be unique.') % record.slug)
