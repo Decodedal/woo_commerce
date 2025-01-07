@@ -19,7 +19,8 @@
 #    DEALINGS IN THE SOFTWARE.
 #
 ###############################################################################
-from odoo import fields,models
+from odoo import fields, models, api
+from odoo.exceptions import ValidationError
 
 
 class ProductAttribute(models.Model):
