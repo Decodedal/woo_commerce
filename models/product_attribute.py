@@ -36,8 +36,8 @@ class ProductAttribute(models.Model):
                                   help='WooCommerce Instance id')
     slug = fields.Char(string='Slug', help='Slug value of the attribute')
 
-    _sql_constraints = [
-        ('unique_slug', 'UNIQUE(slug)', 'The slug must be unique'),
+    _constraints = [
+        Constraint('UNIQUE', fields=['slug'], name='unique_slug', message='The slug must be unique'),
     ]
 
 
@@ -55,5 +55,6 @@ class ProductAttributeValue(models.Model):
                                   help='WooCommerce Instance id')
     slug = fields.Char(string='Slug', help='Slug value of the attribute.')
 
-    _sql_constraints = [
-        ('unique_slug', 'UNIQUE(slug)', 'The slug must be unique')]
+    _constraints = [
+        Constraint('UNIQUE', fields=['slug'], name='unique_slug_value', message='The slug must be unique'),
+    ]
